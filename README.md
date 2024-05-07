@@ -3,6 +3,8 @@
 ## Overview
 This tool is designed to automate the process of fetching `.rego` policy files from a specified GitHub repository and creating corresponding policy entries in Harness. It utilizes environment variables for configuration, making it flexible and easy to integrate into different environments.
 
+*** WARNING this is a raw MVP use at your own risk  ***
+
 ## Features
 - **GitHub Integration**: Connects to a specified GitHub repository to retrieve `.rego` files.
 - **Harness Integration**: Creates policies in Harness using the contents of the fetched files.
