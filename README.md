@@ -27,6 +27,8 @@ Set the following environment variables in your environment:
 - `GITHUBUSER`: GitHub username
 - `GITHUBREPO`: GitHub repository name
 
+example : export HARNESSORG=default
+
 ## Installation
 1. Ensure Go is installed and properly configured on your system.
 2. Clone this repository or download the source files into a local directory.
