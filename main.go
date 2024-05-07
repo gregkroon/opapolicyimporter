@@ -15,7 +15,7 @@ var HarnessOrg = os.Getenv("HARNESSORG")
 var HarnessProject = os.Getenv("HARNESSPROJECT")
 var HarnessAccountId = os.Getenv("HARNESSACCOUNTID")
 var HarnessAPIKey = os.Getenv("HARNESSAPIKEY")
-var githubToken = os.Getenv("GITHUBTOKEN")
+var GithubToken = os.Getenv("GITHUBTOKEN")
 var GithubUser = os.Getenv("GITHUBUSER")
 var GithubRepo = os.Getenv("GITHUBREPO")
 var HarnessBaseURL = "https://app.harness.io/gateway/pm/api/v1/policies"
@@ -24,6 +24,11 @@ var GithubRepoUrl = "https://api.github.com/repos/" + GithubUser + "/" + GithubR
 var HarnessURL = HarnessBaseURL
 
 func main() {
+
+	if HarnessAccountId == "" || HarnessAPIKey == "" || GithubToken == "" || GithubUser == "" || GithubRepo == "" {
+		fmt.Println("Error: One or More required environment variable or environment variable values are missing.")
+		return
+	}
 
 	files, err := getFilesFromGitHub(GithubRepoUrl)
 	if err != nil {
@@ -63,7 +68,7 @@ func getFilesFromGitHub(repoURL string) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("Authorization", "token "+githubToken)
+	req.Header.Set("Authorization", "token "+GithubToken)
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -100,7 +105,7 @@ func getFileContent(repoURL, filePath string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("Authorization", "token "+githubToken)
+	req.Header.Set("Authorization", "token "+GithubToken)
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
