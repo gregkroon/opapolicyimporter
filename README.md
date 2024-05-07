@@ -1,4 +1,4 @@
-# OPA import Tool
+# OPA policy importer
 
 ## Overview
 This tool is designed to automate the process of fetching `.rego` policy files from a specified GitHub repository and creating corresponding policy entries in Harness. It utilizes environment variables for configuration, making it flexible and easy to integrate into different environments.
