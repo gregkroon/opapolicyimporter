@@ -18,8 +18,8 @@ This tool is designed to automate the process of fetching `.rego` policy files f
 ## Configuration
 Set the following environment variables in your environment:
 
-- `HARNESSORG`: Harness organization identifier (optional)
-- `HARNESSPROJECT`: Harness project identifier (optional)
+- `HARNESSORG`: Harness organization identifier (optional defaults to account level - required if populating the project value)
+- `HARNESSPROJECT`: Harness project identifier (optional default to Org or account)
 - `HARNESSACCOUNTID`: Harness account identifier (mandatory)
 - `HARNESSAPIKEY`: API key for accessing Harness (mandatory)
 - `GITHUBTOKEN`: GitHub token for accessing GitHub repositories (mandatory)
