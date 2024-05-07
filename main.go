@@ -13,7 +13,6 @@ import (
 
 var HarnessOrg = os.Getenv("HARNESSORG")
 var HarnessProject = os.Getenv("HARNESSPROJECT")
-var HarnessModule = os.Getenv("HARNESSMODULE")
 var HarnessAccountId = os.Getenv("HARNESSACCOUNTID")
 var HarnessAPIKey = os.Getenv("HARNESSAPIKEY")
 var githubToken = os.Getenv("GITHUBTOKEN")
@@ -143,8 +142,14 @@ func createPolicy(payload map[string]interface{}) error {
 	req.Header.Set("x-api-key", HarnessAPIKey)
 	query := req.URL.Query()
 	query.Add("accountIdentifier", HarnessAccountId)
-	query.Add("orgIdentifier", HarnessOrg)
-	query.Add("projectIdentifier", HarnessProject)
+
+	if HarnessOrg != "" {
+		query.Add("orgIdentifier", HarnessOrg)
+	}
+	if HarnessProject != "" {
+		query.Add("projectIdentifier", HarnessProject)
+	}
+
 	req.URL.RawQuery = query.Encode()
 
 	resp, err := http.DefaultClient.Do(req)
